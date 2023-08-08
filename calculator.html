@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="row">
+    <div class="col-6 col1">
+      <div class="calculator">
+        <input type="text" id="display" >
+        <input  id="answer" style="margin-top:2%;">
+        <div class="buttons">
+          <button onclick="appendToDisplay('1')">1</button>
+          <button onclick="appendToDisplay('2')">2</button>
+          <button onclick="appendToDisplay('3')">3</button>
+          <button onclick="appendToDisplay('4')">4</button>
+          <button onclick="appendToDisplay('5')">5</button>
+          <button onclick="appendToDisplay('6')">6</button>
+          <button onclick="appendToDisplay('7')">7</button>
+          <button onclick="appendToDisplay('8')">8</button>
+          <button onclick="appendToDisplay('9')">9</button>
+          <button onclick="appendToDisplay('0')">0</button>
+          <button onclick="clearDisplay()">C</button>
+          <button onclick="backspace()">⌫</button>
+          <button onclick="appendToDisplay('+')">+</button>
+          <button onclick="appendToDisplay('-')">-</button>
+          <button onclick="appendToDisplay('*')">*</button>
+          <button onclick="appendToDisplay('/')">/</button>
+          <button onclick="appendToDisplay('sin')">sin</button>
+          <button onclick="appendToDisplay('cos')">cos</button>
+          <button onclick="appendToDisplay('tan')">tan</button>
+          <button onclick="appendToDisplay('sqrt')">sqrt</button>
+          <button onclick="appendToDisplay('^')">^</button>
+          <button onclick="appendToDisplay('.')">.</button>
+          <button onclick="appendToDisplay('e')">e</button>
+          <button onclick="appendToDisplay('pi')">pi</button>
+          <button onclick="appendToDisplay('log')">log</button>
+          <button onclick="appendToDisplay('&#40;')">&#40;</button>
+          <button onclick="appendToDisplay('&#41;')">&#41;</button>
+          <button onclick="calculate()">=</button>
+         
+        </div>
+      </div>
+
+    </div>
+    <div class="col-6 col2">
+      <div class="variable">
+        <label for="variableName">Variable Name:</label>
+        <input type="text" id="variableName">
+    
+        <label for="variableValue">Variable Value:</label>
+        <input type="number" id="variableValue">
+    
+        <button onclick="saveVariable()">Save Variable</button>
+       
+        
+     </div>
+     
+    </div>
+  </div>
+  
+  
+ 
+  <script src="script1.js"></script>
+</body>
+</html>

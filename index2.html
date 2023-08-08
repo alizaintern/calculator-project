@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Scientific Calculator using HTML, CSS and Js
+	</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+			integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer">
+	</script>
+</head>
+<body>
+<form>
+		<table>
+			<tr>
+				<td colspan="6">
+					<input id="display" type="text">
+					<p id="result"></p>
+
+                
+				</td>
+			</tr>
+			<tr>
+				<td><input type="button" value="1"
+						onclick="display.value += '1'"></td>
+				<td><input type="button" value="2"
+						onclick="display.value += '2'"></td>
+				<td><input type="button" value="3"
+						onclick="display.value += '3'"></td>
+				<td><input type="button" value="C"
+						onclick="display.value = ''"></td>
+				<td><input type="button" value="⌫"
+						onclick="backspace()"></td>
+				<td><input type="button" value="Ans"
+						onclick="Ans()"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="4"
+						onclick="display.value += '4'"></td>
+				<td><input type="button" value="5"
+						onclick="display.value += '5'"></td>
+				<td><input type="button" value="6"
+						onclick="display.value += '6'"></td>
+				<td><input type="button" value="-"
+						onclick="display.value += '-'"></td>
+				<td><input type="button" value="%"
+						onclick="display.value += '%'"></td>
+				<td><input type="button" value="cos("
+						onclick="display.value += 'cos('"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="7"
+						onclick="display.value += '7'"></td>
+				<td><input type="button" value="8"
+						onclick="display.value += '8'"></td>
+				<td><input type="button" value="9"
+						onclick="display.value += '9'"></td>
+				<td><input type="button" value="x"
+						onclick="display.value += '*'"></td>
+				<td><input type="button" value="!"
+						onclick="display.value += '!'"></td>
+				<td><input type="button" value="sin("
+						onclick="display.value += 'sin('"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="."
+						onclick="display.value += '.'"></td>
+				<td><input type="button" value="0"
+						onclick="display.value += '0'"></td>
+				<td><input type="button" value="="
+						onclick="calculate()"></td>
+				<td><input type="button" value="+"
+						onclick="display.value += '+'"></td>
+				<td><input type="button" value="/"
+						onclick="display.value += '/'"></td>
+				<td><input type="button" value="tan("
+						onclick="display.value += 'tan('"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="E"
+						onclick="e()"></td>
+				<td><input type="button" value="pi"
+						onclick="pi()"></td>
+				<td><input type="button" value="^"
+						onclick="power()"></td>
+				<td><input type="button" value="("
+						onclick="display.value += '('"></td>
+				<td><input type="button" value=")"
+						onclick="display.value += ')'"></td>
+				<td><input type="button" value="log("
+						onclick="base10Log()"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="sqrt("
+						onclick="squareRoot()"></td>
+				<td><input type="button" value="ln2"
+						onclick="display.value += Math.LN2"></td>
+				<td><input type="button" value="log10("
+						onclick="base10Log()"></td>
+				<td><input type="button" value="l2e"
+						onclick="display.value += Math.LOG2E"></td>
+				<td><input type="button" value="l10e"
+						onclick="display.value += Math.LOG10E"></td>
+				<td><input type="button" value="exp("
+						onclick="display.value += 'exp('"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</hmtl>
+    <script>
+        // function isOperator(ch) {
+        //     return ch === '+' || ch === '-' || ch === '*' || ch === '/' || ch === '^';
+        // }
+
+        // function getPrecedence(ch) {
+        //     if (ch === '^')
+        //         return 3;
+        //     else if (ch === '*' || ch === '/')
+        //         return 2;
+        //     else if (ch === '+' || ch === '-')
+        //         return 1;
+        //     else
+        //         return 0;
+        // }
+
+        // function infixToPostfix(infix) {
+        //     let postfix = '';
+        //     const operatorStack = [];
+
+        //     for (let i = 0; i < infix.length; i++) {
+        //         const ch = infix[i];
+
+        //         if (ch === ' ') {
+        //             continue; // Skip spaces
+        //         } else if (!isNaN(ch)) {
+        //             // Append digits directly to output
+        //             postfix += ch;
+        //         } else if (ch === '(') {
+        //             operatorStack.push(ch);
+        //         } else if (ch === ')') {
+        //             while (operatorStack.length > 0 && operatorStack[operatorStack.length - 1] !== '(') {
+        //                 postfix += ' ' + operatorStack.pop();
+        //             }
+        //             operatorStack.pop(); // Pop '('
+        //         } else if (isOperator(ch)) {
+        //             postfix += ' ';
+        //             while (operatorStack.length > 0 && getPrecedence(operatorStack[operatorStack.length - 1]) >= getPrecedence(ch)) {
+        //                 postfix += operatorStack.pop();
+        //             }
+        //             operatorStack.push(ch);
+        //         }
+        //     }
+
+        //     while (operatorStack.length > 0) {
+        //         postfix += ' ' + operatorStack.pop();
+        //     }
+
+        //     return postfix.trim();
+        // }
+
+        // function  evaluatePostfix(postfix) {
+           
+        //     const tokens = postfix.split(' ');
+        //     const operandStack = [];
+
+        //     for (const token of tokens) {
+        //         if (!isNaN(token)) {
+        //             operandStack.push(Number(token));
+        //         } else if (isOperator(token)) {
+        //             const operand2 = operandStack.pop();
+        //             const operand1 = operandStack.pop();
+
+        //             switch (token) {
+        //                 case '+':
+        //                     operandStack.push(operand1 + operand2);
+        //                     break;
+        //                 case '-':
+        //                     operandStack.push(operand1 - operand2);
+        //                     break;
+        //                 case '*':
+        //                     operandStack.push(operand1 * operand2);
+        //                     break;
+        //                 case '/':
+        //                     operandStack.push(operand1 / operand2);
+        //                     break;
+        //                 case '^':
+        //                     operandStack.push(Math.pow(operand1, operand2));
+        //                     break;
+        //                 case 'Sqrt':
+        //                     operandStack.push(Math.pow(operand1, operand2));
+        //                     break;
+                        
+        //             }
+        //         }
+        //     }
+
+        //     return operandStack.pop();
+        // }
+        
+        function isOperator(ch) {
+    return ['+', '-', '*', '/', 'sin', 'cos', 'tan', 'sqrt', '^'].includes(ch);
+}
+
+function getPrecedence(ch) {
+    switch (ch) {
+        case '+':
+        case '-':
+            return 1;
+        case '*':
+        case '/':
+        case '^':
+            return 2;
+        case 'sin':
+        case 'cos':
+        case 'tan':
+        case 'sqrt':
+            return 3;
+        default:
+            return 0;
+    }
+}
+
+function applyOperator(operator, operand1, operand2) {
+    switch (operator) {
+        case '+':
+            return operand1 + operand2;
+        case '-':
+            return operand1 - operand2;
+        case '*':
+            return operand1 * operand2;
+        case '/':
+            return operand1 / operand2;
+        case '^':
+            return Math.pow(operand1, operand2);
+        case 'sin':
+            return Math.sin(operand2);
+        case 'cos':
+            return Math.cos(operand2);
+        case 'tan':
+            return Math.tan(operand2);
+        case 'sqrt':
+            return Math.sqrt(operand2);
+        default:
+            throw new Error('Invalid operator: ' + operator);
+    }
+}
+
+function evaluateExpression(tokens) {
+    const valueStack = [];
+    const operatorStack = [];
+
+    while (tokens.length > 0) {
+        const token = tokens.shift();
+        if (!isNaN(parseFloat(token))) {
+            valueStack.push(parseFloat(token));
+        } else if (isOperator(token)) {
+            while (
+                operatorStack.length > 0 &&
+                getPrecedence(operatorStack[operatorStack.length - 1]) >= getPrecedence(token)
+            ) {
+                const operator = operatorStack.pop();
+                const operand2 = valueStack.pop();
+                const operand1 = valueStack.pop();
+                const result = applyOperator(operator, operand1, operand2);
+                valueStack.push(result);
+            }
+            operatorStack.push(token);
+        } else if (token === '(') {
+            operatorStack.push(token);
+        } else if (token === ')') {
+            while (operatorStack.length > 0 && operatorStack[operatorStack.length - 1] !== '(') {
+                const operator = operatorStack.pop();
+                const operand2 = valueStack.pop();
+                const operand1 = valueStack.pop();
+                const result = applyOperator(operator, operand1, operand2);
+                valueStack.push(result);
+            }
+            operatorStack.pop(); // Pop the opening parenthesis '('
+        }
+    }
+
+    while (operatorStack.length > 0) {
+        const operator = operatorStack.pop();
+        const operand2 = valueStack.pop();
+        const operand1 = valueStack.pop();
+        const result = applyOperator(operator, operand1, operand2);
+        valueStack.push(result);
+    }
+
+    return valueStack[0];
+}        
+        function backspace() {
+        const display = document.getElementById('display');
+        const currentValue = display.value;
+        if (currentValue.length > 0) {
+            // Remove the last character from the input field
+            display.value = currentValue.slice(0, -1);
+        }
+    }
+
+        function calculate() {
+            const expression = document.getElementById('display').value;
+            const postfixExpression = infixToPostfix(expression);
+            const result = evaluatePostfix(postfixExpression);
+            document.getElementById('display').value ='='+ result;
+        }
+    </script>
+
