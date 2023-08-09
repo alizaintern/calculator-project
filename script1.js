@@ -62,13 +62,7 @@ function isValidExpression(expression) {
       }
   }
   
-  if( stack.length === 0)
-  {
-    return true;
-  } 
-  else{
-    return false;
-  }
+  return stack.length === 0;
 }
 
 
@@ -119,18 +113,17 @@ for(let i=0;i<tokens.length;i++ )
   else if (isOperator(tokens[i]))
   {
     temp=tokens[i];
-    //console.log(temp);
-
+ 
   }
   else if (isNumber(tokens[i]))
   {
     temp=tokens[i];
-    //console.log(temp);
+ 
   }
   else if( variablesDict.hasOwnProperty(tokens[i]))
   {
     temp= variablesDict[tokens[i]];
-    //console.log(temp);
+   
   }
  else{
   temp=tokens[i];
